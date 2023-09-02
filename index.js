@@ -1,8 +1,10 @@
 const express = require('express')
+var bodyParser = require('body-parser')
 const app = express()
-app.all('/getFrameList', (req, res) => {
+var jsonParser = bodyParser.json()
+app.all('/getFrameList',jsonParser, (req, res) => {
     console.log("Just got a request!")
-    var input = JSON.decode(req.body)["content"];
+    var input = req.body.content;
 
 var newstr= input.replaceAll("\"","").split("\n\n");
 var newList=[];
