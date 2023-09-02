@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 app.all('/getFrameList', (req, res) => {
     console.log("Just got a request!")
-    var input = req.body.content;
+    var input = JSON.decode(req.body)["content"];
 
 var newstr= input.replaceAll("\"","").split("\n\n");
 var newList=[];
