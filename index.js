@@ -2,33 +2,34 @@ const express = require("express");
 var bodyParser = require("body-parser");
 const app = express();
 var jsonParser = bodyParser.json();
-app.all("/getFrameList", jsonParser, (req, res) => {
+app.post("/getFrameList", jsonParser, (req, res) => {
   console.log("Just got a request!");
   var input = req.body.content;
 
   var newstr = input.replaceAll('"', "").split("\n\n");
-  var list = ["s"];
   if (newstr.at(newstr.length - 1).includes("Note:")) {
-    var res = newstr.pop();
-    console.log("POPPED ELEM : " + res);
+    var res2 = newstr.pop();
+    console.log("POPPED ELEM : " + res2);
   }
-
+  //   console.log(newstr);
   var newList = [];
+
   for (var i = 0; i < newstr.length; i++) {
     var map = {};
     // newList.push(newstr[0].split("\n"));
     var newl = newstr[i].split("\n");
-    console.log(newl);
+    // console.log(newl);
     /*  if (map["Note"] !== null) {
       return;
     } */
-    map["Title"] = newl[1].replaceAll("Title: ", "");
-    map["Description"] = newl[2].replaceAll("Description: ", "");
-    map["Suitable Camera action"] = newl[3].replaceAll(
-      "Suitable Camera action: ",
-      ""
-    );
-    if (newl[4] !== undefined && !newl[4].includes("Transition")) {
+    map["Title"] = newl[0]
+      .replaceAll(`Frame ${i + 1}`, "")
+      .replaceAll("(", "")
+      .replaceAll(")", "")
+      .trim();
+    map["Description"] = newl[1].replaceAll("Description: ", "");
+    map["Action"] = newl[2].replaceAll("Action: ", "");
+    /* if (newl[4] !== undefined && !newl[4].includes("Transition")) {
       map["Brief Voice over Script"] = newl[4].replaceAll(
         "Brief Voice over Script: ",
         ""
@@ -45,11 +46,10 @@ app.all("/getFrameList", jsonParser, (req, res) => {
         "Suitable Transition: ",
         ""
       );
-    }
+    } */
     newList.push(map);
   }
-
   console.log(newList);
-  res.send(newList);
+  return res.send(newList);
 });
 app.listen(process.env.PORT || 3000);
