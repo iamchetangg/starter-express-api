@@ -12,6 +12,7 @@ for(var i=0; i<newstr.length; i++){
   var map ={};
  // newList.push(newstr[0].split("\n"));
  var newl = newstr[i].split("\n");
+    console.log(newl);
  map["Title"]=newl[1].replaceAll("Title: ","");
  map["Description"]=newl[2].replaceAll("Description: ","");
  map["Suitable Camera action"]=newl[3].replaceAll("Suitable Camera action: ","");
