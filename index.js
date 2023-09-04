@@ -27,8 +27,12 @@ app.post("/getFrameList", jsonParser, (req, res) => {
       .replaceAll("(", "")
       .replaceAll(")", "")
       .trim();
-    map["Description"] = newl[1].replaceAll("Description: ", "");
-    map["Action"] = newl[2].replaceAll("Action: ", "");
+    map["Description"] = newl[1]
+      .replaceAll("Description: ", "")
+      .replaceAll("Description - ", "");
+    map["Action"] = newl[2]
+      .replaceAll("Action: ", "")
+      .replaceAll("Action - ", "");
     /* if (newl[4] !== undefined && !newl[4].includes("Transition")) {
       map["Brief Voice over Script"] = newl[4].replaceAll(
         "Brief Voice over Script: ",
