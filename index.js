@@ -33,6 +33,7 @@ app.post("/getFrameList", jsonParser, (req, res) => {
     map["Action"] = newl[2]
       .replaceAll("Action: ", "")
       .replaceAll("Action - ", "");
+        map["Voice Over Script"] = newl[3].replaceAll("Voice Over Script - ", "");
     /* if (newl[4] !== undefined && !newl[4].includes("Transition")) {
       map["Brief Voice over Script"] = newl[4].replaceAll(
         "Brief Voice over Script: ",
