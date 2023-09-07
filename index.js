@@ -27,7 +27,8 @@ app.post("/getFrameList", jsonParser, (req, res) => {
     console.log("2" + newl[2]+"\n");
     console.log("3" + newl[3]+"\n");
     map["Title"] = newl[0]
-      .replaceAll(`Frame ${i + 1}`, "")
+      .replaceAll(`Panel ${i + 1}`, "")
+      .replaceAll(`Panel #${i + 1}`, "")
       .replaceAll("(", "")
       .replaceAll(")", "")
       .trim();
