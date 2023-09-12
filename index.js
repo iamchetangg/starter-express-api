@@ -8,7 +8,7 @@ app.post("/getFrameList", jsonParser, (req, res) => {
   
   var decodedJSON = JSON.parse(input);
   console.log(decodedJSON);
-  return decodedJSON;
+   res.send(decodedJSON);
 
 });
 app.listen(process.env.PORT || 3000);
