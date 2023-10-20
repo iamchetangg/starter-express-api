@@ -56,7 +56,7 @@ app.post(
             if (
               subResult.response.plan_status_option_plan_status_os ===
                 "cancelled" &&
-              input.data.attributes.cancelled !== true
+              input.data.attributes.status == "active"
             ) {
               console.log("ACTIVATED EVENT");
               //! DONT DO ANYTHING
@@ -176,7 +176,7 @@ app.post("/subscription/updating_credits", jsonParser, async (req, res) => {
           if (
             subResult.response.plan_status_option_plan_status_os ===
               "cancelled" &&
-            input.data.attributes.cancelled !== true
+            input.data.attributes.status == "active"
           ) {
             console.log("ACTIVATED EVENT");
             //! DONT DO ANYTHING
