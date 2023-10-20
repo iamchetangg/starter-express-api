@@ -63,7 +63,7 @@ app.post(
               input.meta.event_name = "subscription_activated";
 
               var bubbleWfReqCancelledEvent = await fetch(
-                `${urls[1]}/api/1.1/wf/updating_credits`,
+                `${urls[1]}/api/1.1/wf/plan_activated`,
                 {
                   method: "POST",
                   // mode: "cors",
@@ -81,7 +81,7 @@ app.post(
               input.meta.event_name = "subscription_cancelled";
 
               var bubbleWfReqCancelledEvent = await fetch(
-                `${urls[1]}/api/1.1/wf/updating_credits`,
+                `${urls[1]}/api/1.1/wf/plan_cancelled`,
                 {
                   method: "POST",
                   // mode: "cors",
@@ -183,7 +183,7 @@ app.post("/subscription/updating_credits", jsonParser, async (req, res) => {
             input.meta.event_name = "subscription_activated";
 
             var bubbleWfReqCancelledEvent = await fetch(
-              `${urls[0]}/api/1.1/wf/updating_credits`,
+              `${urls[0]}/api/1.1/wf/plan_activated`,
               {
                 method: "POST",
                 // mode: "cors",
@@ -201,7 +201,7 @@ app.post("/subscription/updating_credits", jsonParser, async (req, res) => {
             input.meta.event_name = "subscription_cancelled";
 
             var bubbleWfReqCancelledEvent = await fetch(
-              `${urls[0]}/api/1.1/wf/updating_credits`,
+              `${urls[0]}/api/1.1/wf/plan_cancelled`,
               {
                 method: "POST",
                 // mode: "cors",
