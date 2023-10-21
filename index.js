@@ -31,7 +31,7 @@ app.post(
         }
       );
       const result = await response.json();
-      console.log(result);
+      console.log(result.response.results[0]);
       if (result !== null && result !== undefined) {
         var subId =
           result.response.results[0].subscription_info_custom_payments_data;
