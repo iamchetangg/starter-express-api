@@ -116,6 +116,24 @@ app.post(
       } else {
         console.log(res);
       }
+    } else if (input.meta.event_name == "subscription_cancelled") {
+      console.log("CANCELLED EVENT");
+      //? SEND WEBHOOK OBJECT TO BUBBLE WITH event_name set to subscription_cancelled
+      // input.meta.event_name = "subscription_cancelled";
+
+      var bubbleWfReqCancelledEvent = await fetch(
+        `${urls[1]}/api/1.1/wf/plan_cancelled`,
+        {
+          method: "POST",
+          // mode: "cors",
+          headers: { "Content-type": "application/json" },
+
+          body: JSON.stringify(input),
+        }
+      );
+      if (bubbleWfReqCancelledEvent.json() != undefined) {
+        res.send();
+      }
     } else {
       var bubbleWfReqCancelledEvent = await fetch(
         `${urls[1]}/api/1.1/wf/updating_credits`,
